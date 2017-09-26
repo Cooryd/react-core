@@ -1,7 +1,17 @@
+@import (reference) "variables";
+
 .app-layout-container{
   display: flex;
   flex-direction: row;
   .app-layout-content{
-    width:100%;
+    width: 100%;
+  }
+  .nav-pills{
+    height: 100%;
+    background-color: @navbar-default-bg;
+    & > li > a{
+      padding: 12px 24px;
+      color: @navbar-default-color;
+    }
   }
 }

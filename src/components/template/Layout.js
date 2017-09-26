@@ -1,31 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Glyphicon } from 'react-bootstrap';
+import Menu from './Menu';
 import '../../styles/layout.less';
 
 class Layout extends React.Component {
 
-  getContainerOffsetHeight(){
-    const headerElement = document.getElementById('header');
-    let headerElementHeight = 0;
+  constructor(props){
+    super(props);
 
-    if(headerElement){
-      headerElementHeight = headerElement.offsetHeight;
-    }
+    this.state = {
+      offsetHeight: 0
+    };
+  }
 
-    return headerElementHeight;
+  componentDidMount(){
+    this.setContainerOffsetHeight();
+  }
+
+  setContainerOffsetHeight(){
+    const self = this;
+    document.addEventListener("DOMContentLoaded", () => {
+      const headerElement = document.getElementById('header');
+      let headerElementHeight = 0;
+      if(headerElement){
+        headerElementHeight = headerElement.offsetHeight;
+      }
+
+       self.setState({offsetHeight: headerElementHeight});
+    });
   }
 
   render(){
     const { children } = this.props;
     const containerStyle = {
-      height: `calc(100vh - ${this.getContainerOffsetHeight()}px)`
+      height: `calc(100vh - ${this.state.offsetHeight}px)`
     };
+
+    const itemLists = [{icon: 'home'}, {icon: 'user'}];
 
     return(
       <div className="app-layout-container" style={containerStyle}>
         <div style={{width: 'auto'}}>
-          <Glyphicon glyph="star" />
+          <Menu menuItems={itemLists} />
         </div>
         <div className="app-layout-content">
           { children }
