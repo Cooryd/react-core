@@ -1,17 +1,31 @@
 @import (reference) "variables";
 
 .app-layout-container{
-  display: flex;
-  flex-direction: row;
+  &.desktop-layout{
+    display: flex;
+    flex-direction: row;
+  }
   .app-layout-content{
     width: 100%;
   }
-  .nav-pills{
+  .nav{
     height: 100%;
     background-color: @navbar-default-bg;
     & > li > a{
       padding: 12px 24px;
       color: @navbar-default-color;
+    }
+  }
+
+  @media(min-width:@screen-xs-min){
+    .nav-label{
+      display:none;
+    }
+  }
+
+  @media(max-width:@screen-xs-min){
+    .glyphicon{
+      display: none;
     }
   }
 }

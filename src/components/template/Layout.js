@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Grid } from 'react-bootstrap';
 import Menu from './Menu';
 import '../../styles/layout.less';
+import { MOBILE_LAYOUT_WIDTH } from '../../constants/layoutConstants';
 
 class Layout extends React.Component {
 
@@ -9,12 +11,25 @@ class Layout extends React.Component {
     super(props);
 
     this.state = {
-      offsetHeight: 0
+      offsetHeight: 0,
+      layout: 'desktop'
     };
+
+    this.setAppLayout = this.setAppLayout.bind(this);
   }
 
   componentDidMount(){
     this.setContainerOffsetHeight();
+    this.setAppLayout();
+    window.addEventListener('resize', this.setAppLayout);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.setAppLayout);
+  }
+
+  setAppLayout(){
+    this.setState({mobileLayout: window.innerWidth < MOBILE_LAYOUT_WIDTH ? 'mobile' : 'desktop'});
   }
 
   setContainerOffsetHeight(){
@@ -36,15 +51,17 @@ class Layout extends React.Component {
       height: `calc(100vh - ${this.state.offsetHeight}px)`
     };
 
-    const itemLists = [{icon: 'home'}, {icon: 'user'}];
+    const itemLists = [{icon: 'home', title: 'Home'}, {icon: 'user', title: 'User'}];
 
     return(
-      <div className="app-layout-container" style={containerStyle}>
+      <div className={`app-layout-container ${this.state.mobileLayout}-layout`} style={containerStyle}>
         <div style={{width: 'auto'}}>
-          <Menu menuItems={itemLists} />
+          <Menu menuItems={itemLists} layoutStyle={this.state.mobileLayout}/>
         </div>
         <div className="app-layout-content">
-          { children }
+          <Grid fluid>
+            { children }
+          </Grid>
         </div>
       </div>
     );
