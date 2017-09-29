@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Nav, NavItem, Glyphicon, Navbar } from 'react-bootstrap';
+import {
+  Nav,
+  Navbar,
+} from 'react-bootstrap';
+import MenuItem from './MenuItem';
 
 class Menu extends React.Component {
   generateMenuItemComponents(){
-    const { menuItems } = this.props;
-    let itemList = [];
+    const { menuItems, layoutStyle } = this.props;
 
-    menuItems.map(
-      (item, index) => {
-        itemList[index] = <NavItem key={index} eventKey={index} >{ item.icon  ? <Glyphicon glyph={item.icon} /> : index } <span className="nav-label">{item.title}</span></NavItem>;
-      }
+    return menuItems.map(
+      (item, index) => <MenuItem key={index} index={index} menuItem={item} showTooltip={layoutStyle === 'desktop'} />
     );
 
-    return itemList;
   }
 
   render(){
@@ -27,7 +27,7 @@ class Menu extends React.Component {
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav>
-                { this.generateMenuItemComponents().map( item => item ) }
+                {this.generateMenuItemComponents().map( item => item )}
               </Nav>
             </Navbar.Collapse>
           </Navbar>
