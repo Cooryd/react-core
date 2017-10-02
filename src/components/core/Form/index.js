@@ -1,45 +1,44 @@
-/* eslint-disable no-console */
+/* eslint-disable react/no-multi-comp */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Form extends React.Component{
-  constructor(props){
-    super(props);
+  static create(WrappedComponent){
+    return class extends React.Component {
+      constructor(props){
+        super(props);
 
-    this.state = {
-      data: {}
+        this.formData = {};
+        this.addField = this.addFieldToForm.bind(this);
+      }
+
+      addFieldToForm(fieldsName, options = {}){
+        let tempFormData = {...this.formData};
+        if (!tempFormData[fieldsName]) {
+          tempFormData[fieldsName] = { value: options.initialValue, dirty: false, valid: false };
+          this.formData = tempFormData;
+        }
+
+        return (FieldComponent) =>  React.cloneElement(FieldComponent, { defaultValue:tempFormData[fieldsName].value });
+      }
+
+      render(){
+        return <WrappedComponent {...this.props} form={this} />;
+      }
     };
   }
 
-  updateData(e, name){
-    let tempData = {...this.state.data};
-    tempData[name] = e.target.value;
-    this.setState({data : tempData});
-  }
-
-  renderChildComponents(){
-    const { children } = this.props;
-    const self = this;
-   return  React.Children.map(
-     children,
-     child => {
-       //TODO: Check child.type and only add onChange if it is one of the Bootstrap Form elements.
-       try{
-         return React.cloneElement(child, { onChange: (() => e => self.updateData(e, child.props.name))()});
-       }
-       catch(e){
-         throw new Error('Error rendering a form child component');
-       }
-     }
-    );
-  }
-
   render(){
-    return (
-      <form>
-        { this.renderChildComponents() }
+    return(
+      <form >
+        { this.props.children }
       </form>
     );
   }
 }
-//TODO: Add PropTypes top this component.
+
+Form.propTypes = {
+  children: PropTypes.element
+};
+
 export default Form;

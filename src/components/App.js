@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 import Layout from './template/Layout';
 import { PageNotFoundComponent } from './404';
-import Form from './core/Form';
+import { Home } from './Home';
 
 class App extends React.Component {
   render() {
-    const Home = () =>  <div><Form><input name="ele1"/><input /><input name="ele3"/></Form></div>;
     return (
       <Layout>
         <Switch>
