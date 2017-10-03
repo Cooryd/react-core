@@ -1,7 +1,7 @@
 {
-  "name": "new-project",
-  "version": "0.1.0",
-  "description": "",
+  "name": "react-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate for starting new react application",
   "engines": {
     "npm": ">=3"
   },
@@ -26,7 +26,7 @@
     "open:cover": "npm run test:cover && opn ./coverage/lcov-report/index.html",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
   },
-  "author": "",
+  "author": "Cory Donkin",
   "license": "MIT",
   "dependencies": {
     "async-validator": "1.8.1",
@@ -36,7 +36,6 @@
     "react-bootstrap": "0.31.3",
     "react-dom": "16.0.0",
     "react-redux": "5.0.5",
-    "react-router": "4.2.0",
     "react-router-dom": "4.2.2",
     "react-router-redux": "5.0.0-alpha.6",
     "redux": "3.6.0",
@@ -61,7 +60,8 @@
     "connect-history-api-fallback": "1.3.0",
     "coveralls": "2.13.1",
     "css-loader": "0.28.4",
-    "enzyme": "2.9.1",
+    "enzyme": "3.0.0",
+    "enzyme-adapter-react-16": "1.0.0",
     "eslint": "4.2.0",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-react": "7.3.0",
@@ -76,7 +76,6 @@
     "json-loader": "0.5.4",
     "less": "2.7.2",
     "less-loader": "4.0.5",
-    "minimatch": "3.0.4",
     "mockdate": "2.0.1",
     "node-sass": "4.5.3",
     "npm-run-all": "4.0.2",
@@ -84,6 +83,7 @@
     "postcss-loader": "1.2.1",
     "prompt": "1.0.0",
     "prop-types": "15.5.10",
+    "raf": "3.3.2",
     "react-hot-loader": "3.0.0-beta.6",
     "react-test-renderer": "16.0.0",
     "redux-immutable-state-invariant": "2.0.0",
@@ -106,7 +106,11 @@
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js",
       "\\.(css|less)$": "<rootDir>/tools/assetsTransformer.js"
-    }
+    },
+    "setupFiles": [
+      "raf/polyfill",
+      "./tools/enzymeTestAdapterSetup.js"
+    ]
   },
   "babel": {
     "presets": [
