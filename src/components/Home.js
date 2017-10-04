@@ -6,6 +6,7 @@ import Form from './core/Form';
 class HomeComponent extends React.Component {
   render(){
     const { form } = this.props;
+    console.log(this.props.form.getFormValues());
     return(
       <Form >
         {
