@@ -1,23 +1,14 @@
 /* eslint-disable */
 import React from 'react';
-import PropTypes from 'prop-types';
-import Form from './core/Form';
 
-class HomeComponent extends React.Component {
+class Home extends React.Component {
   render(){
-    const { form } = this.props;
-    console.log(this.props.form.getFormValues());
     return(
-      <Form >
-        {
-          this.props.form.addField('inputField', {})(<input />)
-        }
-      </Form>
+      <div> Home page </div>
     );
   }
 }
-HomeComponent.propTypes = {
-  form: PropTypes.object
+Home.propTypes = {
 };
 
-export const Home  = Form.create(HomeComponent);
+export default Home;
