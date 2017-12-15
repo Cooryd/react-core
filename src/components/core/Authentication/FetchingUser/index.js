@@ -1,18 +1,17 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 
-export const PageNotFoundComponent = () => {
+export const FetchingUser = () => {
     return (
-        <div className="app-error-container">
+        <div className="app-loading-spinner-container">
             <div className="app-notification-content">
                 <div className="app-notification-icon">
                     <FontAwesome
-                        name="exclamation-triangle"
+                        name="circle-o-notch"
                         size="5x"
-                    />
+                        spin />
                 </div>
-                <div className="app-notification-title">404</div>
-                <small>This page does not exist.</small>
+                <div>Fetching details...</div>
             </div>
         </div>
     );

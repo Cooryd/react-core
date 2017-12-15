@@ -1,7 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 
-export const PageNotFoundComponent = () => {
+export const ErrorFetching = () => {
     return (
         <div className="app-error-container">
             <div className="app-notification-content">
@@ -11,8 +11,8 @@ export const PageNotFoundComponent = () => {
                         size="5x"
                     />
                 </div>
-                <div className="app-notification-title">404</div>
-                <small>This page does not exist.</small>
+                <div className="app-notification-title">500</div>
+                <small>Something went wrong, please try refreshing</small>
             </div>
         </div>
     );

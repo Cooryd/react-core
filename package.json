@@ -31,10 +31,12 @@
   "dependencies": {
     "async-validator": "1.8.1",
     "bootstrap": "3.3.7",
+    "font-awesome": "4.7.0",
     "object-assign": "4.1.0",
     "react": "16.0.0",
     "react-bootstrap": "0.31.3",
     "react-dom": "16.0.0",
+    "react-fontawesome": "1.6.1",
     "react-redux": "5.0.5",
     "react-router-dom": "4.2.2",
     "react-router-redux": "5.0.0-alpha.6",

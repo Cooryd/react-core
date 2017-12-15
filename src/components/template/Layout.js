@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from 'react-bootstrap';
 import Menu from './Menu';
-import '../../styles/layout.less';
+import '../../styles/template/layout.less';
 import { MOBILE_LAYOUT_WIDTH } from '../../constants/layoutConstants';
 
 class Layout extends React.Component {

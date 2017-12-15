@@ -1,0 +1,27 @@
+@import (reference) '../../variables';
+
+.app-loading-spinner-container{
+  .app-notification-container(@loading-spinner-color, @text-color);
+}
+
+.app-error-container{
+  .app-notification-container(@state-danger-text, @state-danger-text);
+}
+
+.app-notification-container(@icon-color, @text-color){
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  .app-notification-content{
+    text-align:center;
+    .app-notification-icon{
+      color: @icon-color;
+    }
+    .app-notification-title{
+      font-size: 60px;
+      line-height: 60px;
+      color: @text-color;
+    }
+  }
+}

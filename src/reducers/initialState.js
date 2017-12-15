@@ -1,6 +1,6 @@
 export default {
   currentUser: {
-    hasLoaded: false,
+    fetchResponse: 'UNAUTHENTICATED',
     role: null,
     id: null,
     name: null
