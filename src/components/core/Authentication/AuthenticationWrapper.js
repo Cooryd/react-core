@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-export default function AuthenticationWrapper(WrappedContent, settings = {}, LoadingComponent, UnauthenticatedComponent, UserFetchErrorComponent) {
+export default function AuthenticationWrapper(WrappedContent, settings = {}, LoadingComponent, UnauthenticatedComponent, UserFetchErrorComponent, UnauthorisedComponent) {
   class BaseAuthWrapper extends React.Component {
     ensureUserRole(currentUser){
       if (Array.isArray(settings.roles)) {
@@ -22,7 +22,7 @@ export default function AuthenticationWrapper(WrappedContent, settings = {}, Loa
             case (settings.isLoggedIn && currentUser.fetchResponse === 'ERROR'):
               return UserFetchErrorComponent ? <UserFetchErrorComponent /> : null;
             case (settings.roles && !this.ensureUserRole(currentUser)):
-                return null;
+                return UnauthorisedComponent ? <UnauthorisedComponent /> : null;
             default:
                 return <WrappedContent {...this.props}/>;
         }
