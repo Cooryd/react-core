@@ -1,7 +1,7 @@
 export default {
   currentUser: {
-    fetchResponse: 'SUCCESS',
-    role: 'SUPERADMIN',
+    fetchResponse: null,
+    role: null,
     id: null,
     name: null
   }

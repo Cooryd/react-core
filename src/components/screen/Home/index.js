@@ -13,4 +13,4 @@ class Home extends React.Component {
 Home.propTypes = {
 };
 
-export default Home = AuthenticationWrapper(Home, { isLoggedIn: true, roles: ['SUPERADMIN'] }, FetchingUser, UnauthenticatedUser, ErrorFetching, UnauthorisedUser);
+export default Home = AuthenticationWrapper(Home, { isLoggedIn: true }, FetchingUser, UnauthenticatedUser, ErrorFetching, UnauthorisedUser);
