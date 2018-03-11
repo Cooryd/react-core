@@ -4,7 +4,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import configureStore, { history } from './store/configureStore';
-import Root from './components/Root';
+import Root from './Root';
 const store = configureStore();
 
 render(
@@ -15,8 +15,8 @@ render(
 );
 
 if (module.hot) {
-  module.hot.accept('./components/Root', () => {
-    const NewRoot = require('./components/Root').default;
+  module.hot.accept('./Root', () => {
+    const NewRoot = require('./Root').default;
     render(
       <AppContainer>
         <NewRoot store={store} history={history} />
