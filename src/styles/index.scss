@@ -1,0 +1,6 @@
+//Bootstrap variable overrrides
+@import "_variable_override";
+// Bootstrap and its default variables
+@import "node_modules/bootstrap/scss/bootstrap";
+// Bootstrap base styles override
+@import "_bootstrap_overrider.scss";
